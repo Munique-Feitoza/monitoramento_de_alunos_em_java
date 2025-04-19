@@ -122,7 +122,7 @@ Consulte o arquivo LICENSE para mais informações.
 ## 📬 Contato
 Para dúvidas, sugestões ou colaborações, entre em contato com o desenvolvedor.  
 Email: muniquefeitoz4@gmail.com  
-GitHub: Munique-Feitoza  
+GitHub: https://github.com/Munique-Feitoza    
 LinkedIn: https://linkedin.com/in/munique-feitoza-77034b231/  
 
 Desenvolvido com 💻 + 🥋.
