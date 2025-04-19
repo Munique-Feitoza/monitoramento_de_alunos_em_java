@@ -1,78 +1,128 @@
-# Academia de Jiu-Jitsu - Sistema de Gerenciamento
-## Descrição
-Este projeto é um sistema de gerenciamento para academias de Jiu-Jitsu desenvolvido em Java com conexão a banco de dados MySQL. O sistema permite o cadastro, consulta e gerenciamento de alunos, professores, turmas, equipes e eventos, além da geração de relatórios diversos.
+# 🥋 Academia de Jiu-Jitsu - Sistema de Gerenciamento
 
-## Funcionalidades Principais
-### Gerenciamento de Alunos
-- Cadastro completo de alunos com informações pessoais, características especiais (autismo, gênero) e dados técnicos (faixa, grau, equipe)
-- Listagem e busca detalhada de alunos
-- Atualização de informações
-- Promoção de faixas/graus com registro no histórico
-- Alteração de status (ativo/inativo)
+## 📋 Descrição
 
-## Relatórios
+Este projeto é um **sistema de gerenciamento para academias de Jiu-Jitsu**, desenvolvido em **Java** com conexão ao banco de dados **MySQL**. Ele segue a arquitetura **MVC** (Model-View-Controller), e está organizado em camadas para facilitar a manutenção e escalabilidade.
+
+O sistema permite **cadastrar, consultar, atualizar e gerenciar** alunos, professores, turmas, equipes, eventos, faixas e histórico de promoções. Além disso, oferece geração de **relatórios específicos** para análise do perfil dos alunos.
+
+---
+
+## ✅ Funcionalidades Principais
+
+### 👤 Gerenciamento de Alunos
+- Cadastro completo com informações pessoais e técnicas
+- Indicação de características especiais (ex: autismo, gênero)
+- Associação com faixas, graus e equipes
+- Atualização de status (ativo/inativo)
+- Histórico de promoções (faixa e grau)
+
+### 📊 Relatórios
 - Alunos por faixa
 - Alunos por equipe
-- Alunos autistas
-- Alunos mulheres
+- Alunos com autismo
+- Alunas do sexo feminino
 - Histórico de promoções
 
-## Outros Módulos (em desenvolvimento)
-- Gerenciamento de Professores
-- Gerenciamento de Turmas
-- Gerenciamento de Equipes
-- Gerenciamento de Eventos
+### 📚 Outros Módulos (em desenvolvimento)
+- Cadastro e consulta de professores
+- Gerenciamento de turmas com faixa mínima, horários e dias da semana
+- Cadastro de equipes de treino
+- Organização de eventos (competições, seminários etc.)
 
-## Pré-requisitos
+---
+
+## 🧱 Estrutura do Projeto
+
+Organizado por pacotes seguindo o padrão:  
+src/  
+    ├── com.academia.controller/ # Controladores da aplicação  
+    ├── com.academia.dao/ # DAOs (Acesso ao banco)  
+    ├── com.academia.model/ # Modelos de entidades  
+    ├── com.academia.service/ # Lógica de negócio  
+    ├── com.academia.util/ # Utilitários (Conexão BD, Helpers)  
+
+
+---
+
+## 💽 Estrutura do Banco de Dados
+
+Principais tabelas:
+
+- `alunos` - Dados pessoais e técnicos
+- `professores` - Instrutores da academia
+- `equipes` - Equipes de competição ou treino
+- `cores_faixa` e `graus_faixa` - Sistema de graduação
+- `historico_faixas` - Histórico de promoções
+- `turmas` - Informações sobre cada turma (nome, horário, faixa mínima, professor)
+- `eventos` - Eventos promovidos pela academia
+
+> O banco de dados utilizado é `academia_jiujitsu`.
+
+---
+
+## 🛠️ Pré-requisitos
+
 - Java JDK 8 ou superior
-- MySQL Server 5.7 ou superior
-- MySQL Connector/J (incluído no classpath)
-- Banco de dados "academia_jiujitsu" criado com as tabelas necessárias
+- MySQL Server 5.7+
+- JDBC Driver (MySQL Connector/J)
+- IDE (Eclipse, IntelliJ, VSCode) ou terminal
 
-## Configuração
-1. Clone o repositório ou copie o código fonte
-2. Configure as informações de conexão no arquivo **AcademiaJiujitsuApp.java**:
+---
 
+## ⚙️ Configuração
+
+1. Clone o repositório ou copie o projeto.
+2. Crie o banco de dados MySQL:
+```SQL
+CREATE DATABASE academia_jiujitsu;
 ```
-private static final String URL = "jdbc:mysql://localhost:3306/academia_jiujitsu?" +
-                                  "useSSL=false&" +
-                                  "allowPublicKeyRetrieval=true&" +
-                                  "serverTimezone=UTC";
-private static final String USER = "root";
-private static final String PASSWORD = "sua_senha";
+3. Configure a conexão no arquivo ConexaoBD.java:
+```Java
+private static final String URL = "jdbc:mysql://localhost:3306/academia_jiujitsu?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+private static final String USUARIO = "root";
+private static final String SENHA = "sua_senha";
+```
+4. Garanta que o driver mysql-connector-java esteja incluído no classpath.
+
+---
+
+## ▶️ Como Executar
+1. Compile todos os arquivos .java:
+```
+javac -cp . src/com/academia/**/*.java
+```
+2. Execute o ponto de entrada (ex: AcademiaJiujitsuApp ou outro main):
+```
+java -cp . com.academia.view.AcademiaJiujitsuApp
 ```
 
-3. Certifique-se de ter o driver JDBC do MySQL no classpath.
+---
 
-## Como Executar
-1. Compile o projeto:
-```
-javac AcademiaJiujitsuApp.java
-```
-2. Execute a aplicação:
-```
-java AcademiaJiujitsuApp
-```
+## 🤝 Contribuição
+Contribuições são muito bem-vindas!
+Você pode:
 
-## Estrutura do Banco de Dados
-O sistema espera as seguintes tabelas principais (entre outras):
-- **alunos** - Cadastro de alunos
-- **professores** - Cadastro de instrutores
-- **equipes** - Grupos de treinamento
-- **cores_faixa** - Cores de faixas disponíveis
-- **graus_faixa** - Graus de faixas disponíveis
-- **historico_faixas** - Registro de promoções
-- **turmas** - Turmas de treino
-- **eventos** - Competições e eventos
+Reportar problemas  
 
-## Contribuição
-Contribuições são bem-vindas! Sinta-se à vontade para:
-- Reportar issues
-- Sugerir melhorias
-- Enviar pull requests
+Sugerir novas funcionalidades  
 
-## Licença
-Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
+Melhorar a estrutura do código  
 
-## Contato
-Para mais informações, entre em contato com o desenvolvedor.
+Criar uma interface gráfica (Swing/JavaFX)  
+
+---
+
+## 📝 Licença
+Este projeto está licenciado sob a MIT License.  
+Consulte o arquivo LICENSE para mais informações.  
+
+---
+
+## 📬 Contato
+Para dúvidas, sugestões ou colaborações, entre em contato com o desenvolvedor.  
+Email: muniquefeitoz4@gmail.com  
+GitHub: Munique-Feitoza  
+
+Desenvolvido com 💻 + 🥋.
+
